@@ -45,7 +45,7 @@ services:
           memory: 256M
 
   web:
-    image: ghcr.io/getsentry/sentry:24.6.0-arm64
+    image: ghcr.io/getsentry/sentry@sha256:1e17a0e5b5bddf2cbcd986d361ae46fe102efb8ea2dbf156ba064b2a2cf67ce5
     platform: linux/arm64
     container_name: sentry-web
     restart: unless-stopped
@@ -90,7 +90,7 @@ services:
           memory: 1.5G
 
   worker:
-    image: ghcr.io/getsentry/sentry:24.6.0-arm64
+    image: ghcr.io/getsentry/sentry@sha256:1e17a0e5b5bddf2cbcd986d361ae46fe102efb8ea2dbf156ba064b2a2cf67ce5
     platform: linux/arm64
     container_name: sentry-worker
     restart: unless-stopped
@@ -124,7 +124,7 @@ services:
           memory: 1.5G
 
   cron:
-    image: ghcr.io/getsentry/sentry:24.6.0-arm64
+    image: ghcr.io/getsentry/sentry@sha256:1e17a0e5b5bddf2cbcd986d361ae46fe102efb8ea2dbf156ba064b2a2cf67ce5
     platform: linux/arm64
     container_name: sentry-cron
     restart: unless-stopped
