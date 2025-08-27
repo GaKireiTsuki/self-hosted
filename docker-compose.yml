@@ -44,10 +44,9 @@ services:
           cpus: "0.5"
           memory: 256M
 
-  # 首次部署前需执行：docker compose run --rm web sentry upgrade
   web:
     image: getsentry/sentry:${SENTRY_VERSION}
-    platform: linux/arm64
+    platform: linux/amd64
     container_name: sentry-web
     restart: unless-stopped
     depends_on:
@@ -89,16 +88,10 @@ services:
         limits:
           cpus: "0.75"
           memory: 1.5G
-    # 如使用 Dokploy/Traefik 反代，请取消注释以下 labels，并在 .env 设置域名
-    # labels:
-    #   - "traefik.enable=true"
-    #   - "traefik.http.routers.sentry.rule=Host(`${SENTRY_DOMAIN}`)"
-    #   - "traefik.http.routers.sentry.entrypoints=web"
-    #   - "traefik.http.services.sentry.loadbalancer.server.port=9000"
 
   worker:
     image: getsentry/sentry:${SENTRY_VERSION}
-    platform: linux/arm64
+    platform: linux/amd64
     container_name: sentry-worker
     restart: unless-stopped
     depends_on:
@@ -132,7 +125,7 @@ services:
 
   cron:
     image: getsentry/sentry:${SENTRY_VERSION}
-    platform: linux/arm64
+    platform: linux/amd64
     container_name: sentry-cron
     restart: unless-stopped
     depends_on:
@@ -163,13 +156,6 @@ services:
         limits:
           cpus: "0.3"
           memory: 512M
-
-  # 可选：SMTP（如无需本地 SMTP，建议用 SendGrid/Mailgun 等外部服务）
-  # smtp:
-  #   image: bytemark/smtp
-  #   restart: unless-stopped
-  #   environment:
-  #     RELAY_NETWORKS: :/16
 
 volumes:
   sentry-postgres:
