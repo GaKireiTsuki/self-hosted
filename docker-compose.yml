@@ -45,8 +45,8 @@ services:
           memory: 256M
 
   web:
-    image: getsentry/sentry:${SENTRY_VERSION}
-    platform: linux/amd64
+    image: ghcr.io/getsentry/sentry:24.6.0-arm64
+    platform: linux/arm64
     container_name: sentry-web
     restart: unless-stopped
     depends_on:
@@ -90,8 +90,8 @@ services:
           memory: 1.5G
 
   worker:
-    image: getsentry/sentry:${SENTRY_VERSION}
-    platform: linux/amd64
+    image: ghcr.io/getsentry/sentry:24.6.0-arm64
+    platform: linux/arm64
     container_name: sentry-worker
     restart: unless-stopped
     depends_on:
@@ -124,8 +124,8 @@ services:
           memory: 1.5G
 
   cron:
-    image: getsentry/sentry:${SENTRY_VERSION}
-    platform: linux/amd64
+    image: ghcr.io/getsentry/sentry:24.6.0-arm64
+    platform: linux/arm64
     container_name: sentry-cron
     restart: unless-stopped
     depends_on:
